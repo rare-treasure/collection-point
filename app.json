@@ -1,12 +1,31 @@
 {
-  "pages":[
-    "pages/index/index"
+  "pages": [
+    "pages/use/index",
+    "pages/check/index",
+    "pages/send/index"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
+  "tabBar": {
+    "custom": true,
+    "color": "#000000",
+    "selectedColor": "#000000",
+    "backgroundColor": "#000000",
+    "list": [{
+      "pagePath": "pages/use/index",
+      "text": "寄快递"
+    }, {
+      "pagePath": "pages/check/index",
+      "text": "查快递"
+    }, {
+      "pagePath": "pages/send/index",
+      "text": "个人中心"
+    }]
+  },
+  "usingComponents": {},
   "sitemapLocation": "sitemap.json"
 }

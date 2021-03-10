@@ -1,5 +1,5 @@
 {
-  "name": "miniprogram-ts-quickstart",
+  "name": "collection-point",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -13,7 +13,5 @@
     "@vant/weapp": "^1.6.8"
   },
   "devDependencies": {
-    "miniprogram-api-typings": "^2.8.3-1",
-    "typescript": "^3.3.3333"
   }
 }
