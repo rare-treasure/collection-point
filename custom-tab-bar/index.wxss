@@ -1,1 +1,4 @@
 /* pages/tab-bar/tabbar.wxss */
+.tab-bar view {
+  background: #fff;
+}

@@ -1,0 +1,30 @@
+<!-- page/use/index.wxml -->
+
+<view class="home tab-page">
+  <view class="home-intro">
+    <van-image
+      width="100vw"
+      height="36vh"
+      src="/assets/images/home_bg.png"
+    />
+  </view>
+
+  <view class="home-toolbox flex flex-align__center">
+    <view class="home-toolbox__item flex flex-align__center">
+      <van-image
+        height="{{ imgHeight }}"
+        fit="{{imgFit}}"
+        src="/assets/icons/scan.png"
+      />
+      <text>扫码取件</text>
+    </view>
+    <view class="home-toolbox__item flex flex-align__center">
+      <van-image
+        height="{{ imgHeight }}"
+        fit="{{imgFit}}"
+        src="/assets/icons/sender.png"
+      />
+      <text>寄件下单</text>
+    </view>
+  </view>
+</view>

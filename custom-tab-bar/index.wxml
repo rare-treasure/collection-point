@@ -1,21 +1,22 @@
 <!--pages/tab-bar/tabbar.wxml-->
+<wxs src="/app.wxs" module="app"></wxs>
 
-<van-tabbar active="{{ active }}" bind:change="onChange">
+<van-tabbar class="tab-bar" active="{{ active }}" bind:change="onChange">
   <van-tabbar-item active-color="#3F8FFF" wx:for="{{ otherConfList }}" wx:key="index" icon="{{item.icon ? '' : 'home-o'}}">
     <image
       wx:if="item.icon"
       slot="icon"
-      src="../assets/icons/{{ item.icon }}"
+      src="{{ app.getIconPath(iconPath, item.icon) }}"
       mode="aspectFit"
-      style="width: 50px; height: 22px;"
+      style="width: 50rpx; height: 42rpx;"
     />
     <image
       wx:if="item.icon || item.iconActive"
       slot="icon-active"
-      src="../assets/icons/{{ item.iconActive || item.icon }}"
+      src="{{ app.getIconPath(iconPath, item.iconActive || item.icon) }}"
       mode="aspectFit"
-      style="width: 50px; height: 22px;"
+      style="width: 50px; height: 42rpx;"
     />
-    {{item.name}}
+    <text>{{item.name}}</text>
   </van-tabbar-item>
 </van-tabbar>

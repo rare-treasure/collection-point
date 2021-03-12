@@ -13,8 +13,9 @@ Component({
    * 组件的初始数据
    */
   data: {
-    otherConfList: tabBarConf,
-    pageList: ["pages/use/index", "pages/check/index", "pages/send/index"],
+    otherConfList: tabBarConf.list,
+    pageList: tabBarConf.list.map(item => item.wxmlPath || ''),
+    iconPath: tabBarConf.iconPath,
     active: 0
   },
   /**

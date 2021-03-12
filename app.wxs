@@ -1,0 +1,14 @@
+// app.wxs
+
+module.exports.getIconPath = function (iconPath, path) {
+  var isExist = false;
+  if(iconPath.slice(-1) === '/') {
+    isExist = true;
+  }
+
+  if(path.slice(0) === '/') {
+    return iconPath + (isExist ? path.slice(1) : path);
+  } else {
+    return iconPath + (isExist ? '' : '/') + path;
+  }
+}

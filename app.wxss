@@ -1,1 +1,19 @@
 /** app.wxss **/
+
+.tab-page {
+  width: 100vw;
+  height: 100vh;
+  background: #F3F7F9;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-align__center {
+  align-items: center;
+}
+
+.flex-justify__between {
+  justify-content: space-between;
+}

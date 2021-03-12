@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/use/index",
+    "pages/home/index",
     "pages/check/index",
     "pages/send/index"
   ],
@@ -16,8 +16,8 @@
     "selectedColor": "#000000",
     "backgroundColor": "#000000",
     "list": [{
-      "pagePath": "pages/use/index",
-      "text": "寄快递"
+      "pagePath": "pages/home/index",
+      "text": "首页"
     }, {
       "pagePath": "pages/check/index",
       "text": "查快递"
@@ -26,6 +26,8 @@
       "text": "个人中心"
     }]
   },
-  "usingComponents": {},
+  "usingComponents": {
+    "van-image": "@vant/weapp/image/index"
+  },
   "sitemapLocation": "sitemap.json"
 }
