@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    searchVal: ""
   },
 
   /**
@@ -64,5 +64,12 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  onChange(e) {
+    this.setData({
+      searchVal: e.detail,
+    });
+
+    console.log(this.data.value)
   }
 })

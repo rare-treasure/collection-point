@@ -4,7 +4,7 @@
   <view class="home-intro">
     <van-image
       width="100vw"
-      height="36vh"
+      height="440rpx"
       src="/assets/images/home_bg.png"
     />
   </view>
@@ -14,17 +14,17 @@
       <van-image
         height="{{ imgHeight }}"
         fit="{{imgFit}}"
-        src="/assets/icons/scan.png"
+        src="/assets/icons/sender.png"
       />
-      <text>扫码取件</text>
+      <text>寄件下单</text>
     </view>
     <view class="home-toolbox__item flex flex-align__center">
       <van-image
         height="{{ imgHeight }}"
         fit="{{imgFit}}"
-        src="/assets/icons/sender.png"
+        src="/assets/icons/package.png"
       />
-      <text>寄件下单</text>
+      <text>我的包裹</text>
     </view>
   </view>
 </view>

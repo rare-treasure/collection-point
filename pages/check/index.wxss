@@ -1,1 +1,7 @@
 /* pages/check/index.wxss */
+
+.van-search .van-icon.van-icon-scan,
+.van-search .van-icon.van-icon-search {
+  font-size: 46rpx;
+  color: #3F8FFF;
+}

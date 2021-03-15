@@ -1,4 +1,12 @@
 <!--pages/send/index.wxml-->
-<text>
-我的
-</text>
+<view>头像</view>
+<view>呢称以及手机号</view>
+
+<view>我的包裹</view>
+<view>寄件下单</view>
+<viw>查询记录</viw>
+<view>寄件记录</view>
+<view>地址管理</view>
+<view>联系我们</view>
+<view>关于</view>
+<view>版本号</view>

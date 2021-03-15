@@ -1,4 +1,13 @@
 <!--pages/check/index.wxml-->
-<text>
-查找
-</text>
+
+<van-search placeholder="请输入快递单号" left-icon="" value="{{ searchVal }}" right-icon="{{searchVal.length > 0 ? 'search': 'scan'}}" bind:change="onChange"></van-search>
+我的包裹
+
+寄件下单
+
+寄件记录
+
+运费预估
+
+
+<view>快递的1个月内的查询历史</view>
