@@ -1,6 +1,35 @@
 <!--pages/send/index.wxml-->
-<view>头像</view>
-<view>呢称以及手机号</view>
+<!-- <view>头像</view> -->
+<view class="user-center">
+<view class="layout">
+  <view class="left">
+    <van-image
+      round
+      width="4rem"
+      height="4rem"
+      src="https://img.yzcdn.cn/vant/cat.jpeg"
+    />
+  </view>
+  <view class="right">
+    <view class="nickname">吹风机</view>
+    <view class="tel">137****4882</view>
+  </view>
+</view>
+  <view></view>
+  <van-cell-group custom-class="item">
+    <van-cell title="我的包裹" is-link />
+  </van-cell-group>
+  <van-cell-group custom-class="item">
+    <van-cell title="寄件下单" is-link />
+    <van-cell title="寄件记录" is-link />
+    <van-cell title="地址管理" is-link />
+  </van-cell-group>
+  <van-cell-group>
+    <van-cell title="联系我们" is-link />
+    <van-cell title="关于" is-link />
+  </van-cell-group>
+</view>
+<!-- <view>呢称以及手机号</view>
 
 <view>我的包裹</view>
 <view>寄件下单</view>
@@ -9,4 +38,4 @@
 <view>地址管理</view>
 <view>联系我们</view>
 <view>关于</view>
-<view>版本号</view>
+<view>版本号</view> -->

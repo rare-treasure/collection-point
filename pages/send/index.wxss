@@ -1,1 +1,27 @@
 /* pages/send/send.wxss */
+.user-center{
+  padding-top: 20px;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f9f9f9;
+}
+.user-center .layout {
+  padding-bottom: 15px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.user-center .left {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.user-center .item {
+  margin-bottom: 20px;
+}
+.user-center .nickname {
+  font-size: 32rpx;
+  margin-bottom: 8rpx;
+}
+.user-center .tel {
+  font-size: 28rpx;
+}
