@@ -1,6 +1,16 @@
 <!--pages/check/index.wxml-->
 
-<van-search placeholder="请输入快递单号" left-icon="" value="{{ searchVal }}" right-icon="{{searchVal.length > 0 ? 'search': 'scan'}}" bind:change="onChange"></van-search>
+<van-search shape="round" placeholder="请输入快递单号" left-icon="" value="{{ searchVal }}" right-icon="{{searchVal.length > 0 ? 'search': 'scan'}}" bind:change="onChange"></van-search>
+
+<van-tabs title-inactive-color="rgba(100, 101, 102, 0.8)">
+  <van-tab title="收到的"></van-tab>
+  <van-tab title="寄出的"></van-tab>
+</van-tabs>
+
+<view class="list">
+
+</view>
+
 我的包裹
 
 寄件下单

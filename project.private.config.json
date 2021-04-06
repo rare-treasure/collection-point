@@ -1,0 +1,30 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "个人中心",
+          "pathName": "pages/send/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "查快递",
+          "pathName": "pages/check/index",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

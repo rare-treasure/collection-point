@@ -5,3 +5,8 @@
   font-size: 46rpx;
   color: #3F8FFF;
 }
+
+.list {
+  height: calc(100vh - 54px - 44px - 50px);
+  background: #f9f9f9;
+}

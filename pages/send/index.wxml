@@ -1,41 +1,45 @@
 <!--pages/send/index.wxml-->
 <!-- <view>头像</view> -->
 <view class="user-center">
-<view class="layout">
-  <view class="left">
-    <van-image
-      round
-      width="4rem"
-      height="4rem"
-      src="https://img.yzcdn.cn/vant/cat.jpeg"
-    />
+  <view class="layout" bindtap="getUserInfo">
+    <view class="left flex">
+      <van-icon
+        wx:if="{{isLogin}}"
+        size="120rpx"
+        name="/assets/icons/user_default.png"
+      />
+      <van-image
+        wx:else
+        round
+        width="120rpx"
+        height="120rpx"
+        src="{{userInfo.avatarUrl}}"
+      />
+    </view>
+    <view class="right">
+      <block wx:if="{{isLogin}}">
+        <text>立即登录</text>
+      </block>
+      <block wx:else>
+        <view class="nickname">{{userInfo.nickName}}</view>
+        <view class="update" bindtap="resetUserInfo">点此更新用户信息</view>
+      </block>
+    </view>
   </view>
-  <view class="right">
-    <view class="nickname">吹风机</view>
-    <view class="tel">137****4882</view>
+  <view class="flex flex-justify__between function">
+    <view wx:for="{{funcList}}" wx:key="index" class="flex flex-align__center flex-column">
+      <van-icon name="{{item.icon ? item.icon : '/assets/icons/' + item.iconName + '.png'}}" size="60rpx"/>
+      <view>{{item.name}}</view>
+    </view>
   </view>
-</view>
-  <view></view>
-  <van-cell-group custom-class="item">
-    <van-cell title="我的包裹" is-link />
-  </van-cell-group>
-  <van-cell-group custom-class="item">
-    <van-cell title="寄件下单" is-link />
-    <van-cell title="寄件记录" is-link />
-    <van-cell title="地址管理" is-link />
-  </van-cell-group>
-  <van-cell-group>
-    <van-cell title="联系我们" is-link />
+  <view class="item">
+    <van-cell title="寄件历史" is-link />
+    <van-cell title="查询历史" is-link />
+    <van-cell title="在线客服" is-link />
+  </view>
+  <view class="item">
+    <van-cell title="推荐此小程序" is-link />
+    <van-cell title="版本号" is-link />
     <van-cell title="关于" is-link />
-  </van-cell-group>
+  </view>
 </view>
-<!-- <view>呢称以及手机号</view>
-
-<view>我的包裹</view>
-<view>寄件下单</view>
-<viw>查询记录</viw>
-<view>寄件记录</view>
-<view>地址管理</view>
-<view>联系我们</view>
-<view>关于</view>
-<view>版本号</view> -->

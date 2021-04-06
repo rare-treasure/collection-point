@@ -1,1 +1,1 @@
-@import '../common/index.wxss';.van-sidebar{width:160rpx;width:var(--sidebar-width,160rpx)}
+@import '../common/index.wxss';.van-sidebar{width:80px;width:var(--sidebar-width,80px)}
