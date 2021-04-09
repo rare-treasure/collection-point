@@ -9,4 +9,65 @@
 .list {
   height: calc(100vh - 54px - 44px - 50px);
   background: #f9f9f9;
+  padding: 48rpx 32rpx;
+  box-sizing: border-box;
+}
+
+.card {
+  width: 100%;
+  background: #fff;
+  box-sizing: border-box;
+  border-radius: 16rpx;
+  padding: 24rpx 0;
+  font-size: 28rpx;
+}
+
+.card-site {
+  margin-bottom: 30rpx;
+  border-bottom: 1px solid rgba(212, 212, 212, 0.3);
+  padding: 12rpx 24rpx 28rpx;
+}
+
+.card-site__name {
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 30rpx;
+}
+
+.card-site__addr {
+  font-size: 26rpx;
+  color: #ccc;
+}
+
+.card-site__num {
+  font-size: 26rpx;
+  color: rgba(238, 75, 54, 0.85);
+}
+
+.card-item {
+  padding: 24rpx 28rpx;
+  border-bottom: 1px solid rgba(212, 212, 212, 0.3);
+}
+
+.card-item:last-of-type {
+  margin-bottom: 30rpx;
+}
+
+.card-item__company {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.card-item__icon {
+  margin-left: 8rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.card-item__name {
+  font-size: 26rpx;
+  color: rgba(61, 142, 255, 0.7)
 }

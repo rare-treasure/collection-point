@@ -8,7 +8,50 @@
 </van-tabs>
 
 <view class="list">
+  <view class="card">
+    <view class="card-site">
+      <view class="card-site__name">
+        <text>站点：快递之家</text>
+        <text class="card-site__num">共2个</text>
+      </view>
+      <view class="card-site__addr">
+        地址：广州市天河区
+      </view>
+    </view>
+    <view class="card-express">
+      <view class="card-item" wx:for="{{list}}" wx:key="index">
+        <van-checkbox></van-checkbox>
+        <view class="card-item__content">
+          <view class="card-item__info">
+            <view class="card-item__company">
+              <view class="card-item__num">运单号：SF20162036<van-icon data-number="SF20162036" bindtap="handleCopy" class="card-item__icon" name="/assets/icons/copy.png" size="28rpx"></van-icon></view>
+              <view class="card-item__name">
+                顺丰快递 
+                <!-- 每家快递对应不同颜色 -->
+              </view>
+            </view>
 
+            <view class="card-item__addr">
+              福州 --> 广州
+            </view>
+            <view class="card-item__state">已签收</view>
+          </view>
+
+          <view class="card-item__code">
+            取件码：6590
+          </view>
+
+          <view class="card-item__time">
+            到站时间：2021-04-20 20:20:20
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="card-btn">
+      <van-button>一键拒收</van-button>
+      <van-button>一键取件</van-button>
+    </view>
+  </view>
 </view>
 
 我的包裹

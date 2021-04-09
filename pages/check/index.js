@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    searchVal: ""
+    searchVal: "",
+    list: [{}, {}]
   },
 
   /**
@@ -71,5 +72,16 @@ Page({
     });
 
     console.log(this.data.value)
+  },
+  handleCopy(e) {
+    const { number } = e.target.dataset || {};
+
+    wx.setClipboardData({
+      data: number,
+      success: function () {
+        // 添加下面的代码可以复写复制成功默认提示文本`内容已复制` 
+        wx.hideToast();
+      }
+    })
   }
 })
