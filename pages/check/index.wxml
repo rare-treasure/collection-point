@@ -1,66 +1,77 @@
 <!--pages/check/index.wxml-->
 
-<van-search shape="round" placeholder="请输入快递单号" left-icon="" value="{{ searchVal }}" right-icon="{{searchVal.length > 0 ? 'search': 'scan'}}" bind:change="onChange"></van-search>
+<van-search shape="round" placeholder="请输入快递单号" left-icon="" value="{{ searchVal }}" right-icon="{{searchVal.length > 0 ? 'search': 'scan'}}" bind:change="handleSearch"></van-search>
 
-<van-tabs title-inactive-color="rgba(100, 101, 102, 0.8)">
+<van-tabs title-inactive-color="rgba(100, 101, 102, 0.8)" bind:change="handleTabs">
   <van-tab title="收到的"></van-tab>
   <van-tab title="寄出的"></van-tab>
 </van-tabs>
 
-<view class="list">
-  <view class="card">
-    <view class="card-site">
-      <view class="card-site__name">
-        <text>站点：快递之家</text>
-        <text class="card-site__num">共2个</text>
+<van-toast id="van-toast" />
+
+<view class="{{'list' + (isComplete ? '' : ' flex flex-align__center flex-justify__center')}}">
+  <block wx:if="{{isComplete}}" >
+    <view class="card" wx:for="{{siteData}}" wx:for-index="idx" wx:key="idx">
+      <view class="card-site">
+        <view class="card-site__name">
+          <view>
+            <text>站点：{{item.name}}</text>
+            <van-icon class="card-item__icon" name="/assets/icons/addr.png" size="36rpx"></van-icon>
+          </view>
+          <text class="card-site__num">共{{item.list.length}}个</text>
+        </view>
+        <view class="card-site__addr">
+          地址：{{item.addr}}
+        </view>
       </view>
-      <view class="card-site__addr">
-        地址：广州市天河区
-      </view>
-    </view>
-    <view class="card-express">
-      <view class="card-item" wx:for="{{list}}" wx:key="index">
-        <van-checkbox></van-checkbox>
-        <view class="card-item__content">
-          <view class="card-item__info">
-            <view class="card-item__company">
-              <view class="card-item__num">运单号：SF20162036<van-icon data-number="SF20162036" bindtap="handleCopy" class="card-item__icon" name="/assets/icons/copy.png" size="28rpx"></van-icon></view>
-              <view class="card-item__name">
-                顺丰快递 
-                <!-- 每家快递对应不同颜色 -->
+      <view class="card-express">
+        <view class="card-item" bindtap="handleCheckbox" wx:for-index="subIdx" wx:for-item="subItem" data-no="{{subItem.no}}" wx:for="{{item.list}}" wx:key="no">
+          <van-checkbox checked-color="#3F8FFF" value="{{checkbox[subItem.no]}}" data-no="{{subItem.no}}"></van-checkbox>
+          <view class="card-item__wrap">
+            <view class="card-item__content">
+              <view class="card-item__company">
+                <view class="card-item__num">
+                  运单号：{{subItem.no}}
+                  <van-icon data-no="{{subItem.no}}" catchtap="handleCopy" class="card-item__icon" name="/assets/icons/copy.png" size="28rpx"></van-icon>
+                </view>
+                <view class="card-item__name">
+                  {{subItem.name}} 
+                  <!-- 每家快递对应不同颜色 -->
+                </view>
+              </view>
+
+              <view class="card-item__code flex flex-justify__center">
+                取件码：{{subItem.code}}
+              </view>
+
+              <view class="card-item__info flex flex-justify__center flex-align__center">
+                <view>
+                  <view class="card-item__city">{{subItem.info.addr[0]}}</view>
+                  <view class="card-item__user">{{subItem.info.name[0]}}</view>
+                </view>
+                <view><van-icon name="/assets/icons/next-step.png" size="60rpx"></van-icon></view>
+                <view>
+                  <view class="card-item__city">{{subItem.info.addr[1]}}</view>
+                  <view class="card-item__user">{{subItem.info.name[1]}}</view>
+                </view>
               </view>
             </view>
 
-            <view class="card-item__addr">
-              福州 --> 广州
+            <view class="card-item__time">
+              到站时间：{{subItem.time}}<text class="card-item__state">（{{subItem.state}}）</text>
             </view>
-            <view class="card-item__state">已签收</view>
-          </view>
-
-          <view class="card-item__code">
-            取件码：6590
-          </view>
-
-          <view class="card-item__time">
-            到站时间：2021-04-20 20:20:20
           </view>
         </view>
       </view>
+      <view class="card-btn">
+        <van-button size="small" type="primary" bindtap="handlePickUp" disabled="{{!isCheckbox}}">一键取件</van-button>
+        <van-button size="small" type="danger" class="card-btn__reject" disabled="{{!isCheckbox}}" bindtap="handleRejection">一键拒收</van-button>
+      </view>
     </view>
-    <view class="card-btn">
-      <van-button>一键拒收</van-button>
-      <van-button>一键取件</van-button>
+    <view wx:if="{{!siteData.length}}" style="height: 100%" class="flex flex-align__center flex-justify__center">
+      <van-image fit="heightFix" height="320rpx" src="/assets/images/empty.png" ></van-image>
     </view>
-  </view>
+  </block>
+  
+  <van-loading wx:if="{{!isComplete}}" size="24px" vertical>加载中...</van-loading>
 </view>
-
-我的包裹
-
-寄件下单
-
-寄件记录
-
-运费预估
-
-
-<view>快递的1个月内的查询历史</view>

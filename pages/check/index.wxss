@@ -38,7 +38,7 @@
 
 .card-site__addr {
   font-size: 26rpx;
-  color: #ccc;
+  color: #999;
 }
 
 .card-site__num {
@@ -49,16 +49,63 @@
 .card-item {
   padding: 24rpx 28rpx;
   border-bottom: 1px solid rgba(212, 212, 212, 0.3);
+  display: flex;
+  align-items: center;
 }
 
 .card-item:last-of-type {
   margin-bottom: 30rpx;
 }
 
+.card-item .van-checkbox {
+  margin-right: 48rpx;
+}
+
+.card-item__wrap {
+  width: 100%;
+}
+
 .card-item__company {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
+}
+
+.card-item__info {
+  font-size: 32rpx;
+  margin-top: 16rpx;
+  margin-bottom: 12rpx;
+}
+
+.card-item__info > view {
+  width: calc((100% - 76rpx) / 2);
+  text-align: center
+}
+
+.card-item__user {
+  font-size: 26rpx;
+  margin-top: 10rpx;
+  color: #ccc;
+  text-align: center;
+}
+
+.card-item__state {
+  font-size: 24rpx;
+  color: rgba(48, 83, 158, 0.7);
+  font-weight: bold;
+  margin-top: 4rpx;
+}
+
+.card-item__code {
+  font-size: 44rpx;
+  font-weight: bolder;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.card-item__time {
+  font-size: 24rpx;
+  color: rgba(238, 75, 54, 0.7);
 }
 
 .card-item__icon {
@@ -69,5 +116,15 @@
 
 .card-item__name {
   font-size: 26rpx;
-  color: rgba(61, 142, 255, 0.7)
+  color: rgba(61, 142, 255, 0.8)
+}
+
+.card-btn {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 30rpx;
+}
+
+.card-btn__reject {
+  margin-left: 18rpx;
 }

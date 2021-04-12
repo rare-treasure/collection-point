@@ -13,12 +13,15 @@
 .flex-align__center {
   align-items: center;
 }
+
 .flex-column {
   flex-direction: column;
 }
+
 .flex-justify__center {
   justify-content: center;
 }
+
 .flex-justify__between {
   justify-content: space-between;
 }
