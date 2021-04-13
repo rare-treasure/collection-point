@@ -34,7 +34,7 @@
     "useIsolateContext": true,
     "useCompilerModule": false,
     "userConfirmedUseCompilerModuleSwitch": false,
-    "userConfirmedBundleSwitch": false,
+    "userConfirmedBundleSwitch": true,
     "packNpmManually": true,
     "packNpmRelationList": [
       {
@@ -51,7 +51,11 @@
   "debugOptions": {
     "hidedInDevtools": []
   },
-  "scripts": {},
+  "scripts": {
+    "beforeCompile": "npm run pxToRpx",
+    "beforePreview": "npm run pxToRpx",
+    "beforeUpload": "npm run pxToRpx"
+  },
   "staticServerOptions": {
     "baseURL": "",
     "servePath": ""

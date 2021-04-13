@@ -11,21 +11,8 @@ Page({
     searchVal: "",
     siteData: [],
     checkbox: {},
+    isRefresher: true,
     isComplete: false
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    this.getList(true);
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
   },
 
   /**
@@ -35,41 +22,10 @@ Page({
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().init();
     }
-  },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    this.setData({
+      isRefresher: true
+    })
   },
   handleSearch(e) {
     this.setData({
@@ -77,25 +33,33 @@ Page({
     });
   },
   handleCheckbox(e) {
-    let { no } = e.target.dataset;
+    let { no, index } = e.target.dataset;
 
     if(!no) {
       no = e.currentTarget.dataset.no || '';
     }
 
-    if(no) {
+    if(!index && index !== 0) {
+      index = e.currentTarget.dataset.index;
+    }
+
+    if(no && (index || index === 0)) {
       const checkbox = {
         ...this.data.checkbox,
         [no]: !this.data.checkbox[no]
       };
 
-      const isCheckbox = Object.keys(checkbox).some(key => {
-        return checkbox[key];
-      })
+      const { isCheckbox } = (this.data.siteData[index] || {});
+      const siteData = this.data.siteData;
+
+      siteData[index] = {
+        ...siteData[index],
+        isCheckbox: !isCheckbox
+      }
 
       this.setData({
         checkbox,
-        isCheckbox
+        siteData
       })
     }
   },
@@ -117,36 +81,62 @@ Page({
       }
     })
   },
-  getList(isSend) {
+  handlePickUp() {
+
+  },
+  getList(isSend, isAdd = false) {
+    const siteData = this.data.siteData;
     this.setData({
-      isComplete: false,
-      siteData: [],
-      checkbox: {}
+      checkbox: {},
+      ...(isAdd ? {
+        isRefresher: true
+      } : {})
     })
 
-    setTimeout(() => {
-      const data = isSend ? [{
-        name: '站点之家',
-        addr: '广东省广州市天河区石牌村25号',
-        list: [{
-          no: 'SF1309548419093',
-          name: '顺丰快递',
-          info: {
-            addr: ['那然格市', '那然色布斯台音布拉格市'],
-            name: ['小天', '小凡']
-          },
-          code: '9650',
-          state: '今天到站',
-          time: util.formatTime(new Date()),
-          color: '#000'
-        }],
-        isCheckbox: false
-      }] : []
+    const pr = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const data = isSend ? new Array(Math.ceil(Math.random() * 10)).join(',').split(',').map((item, idx) => {
+          return {
+            name: '站点之家' + (idx + 1) +'号', 
+            addr: '广东省广州市天河区石牌村' + Math.floor(Math.random() * 100) * (idx + 1) +'号',
+            list: [{
+              no: 'SF' + Math.floor(Math.random() * Date.now()),
+              name: '顺丰快递',
+              info: {
+                addr: ['那然格市', '那然色布斯台音布拉格市'],
+                name: ['小天', '小凡']
+              },
+              code: Math.floor(Math.random() * 9000 + 1000),
+              state: '今天到站',
+              time: util.formatTime(new Date()),
+              color: '#000'
+            }],
+            isCheckbox: false
+          }
+        }) : []
 
-      this.setData({
-        isComplete: true,
-        siteData: data
-      })
-    }, 1000)
+        this.setData({
+          ...(isAdd? {} : { isComplete: true, 
+            isRefresher: false, }),
+          siteData: isAdd ? [...siteData, ...data] : data
+        })
+
+        resolve();
+      }, 1000)
+    });
+
+    return pr;
+  },
+  handleRefreshList() {
+    this.getList(true)
+  },
+  handleLoadMoreList() {
+    wx.showLoading({
+      title: '加载中…'
+    });
+
+    this.getList(true, true).finally(() => {
+      wx.hideLoading()
+    });
   }
 })

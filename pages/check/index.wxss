@@ -7,10 +7,14 @@
 }
 
 .list {
-  height: calc(100vh - 54px - 44px - 50px);
-  background: #f9f9f9;
-  padding: 48rpx 32rpx;
+  padding: 32rpx;
   box-sizing: border-box;
+  min-height: 100%;
+}
+
+.list__wrap {
+  height: calc(100vh - 290rpx);
+  background: #f9f9f9;
 }
 
 .card {
@@ -20,10 +24,14 @@
   border-radius: 16rpx;
   padding: 24rpx 0;
   font-size: 28rpx;
+  margin-bottom: 32rpx;
+}
+
+.list .card:nth-last-of-type(2) {
+  margin-bottom: 0
 }
 
 .card-site {
-  margin-bottom: 30rpx;
   border-bottom: 1px solid rgba(212, 212, 212, 0.3);
   padding: 12rpx 24rpx 28rpx;
 }
@@ -91,20 +99,27 @@
 
 .card-item__state {
   font-size: 24rpx;
-  color: rgba(48, 83, 158, 0.7);
-  font-weight: bold;
-  margin-top: 4rpx;
+  color: rgba(48, 83, 158, 0.6);
 }
 
 .card-item__code {
-  font-size: 44rpx;
+  font-size: 52rpx;
   font-weight: bolder;
-  margin-top: 20rpx;
-  margin-bottom: 20rpx;
+  margin-top: 40rpx;
+  margin-bottom: 30rpx;
+  align-items: flex-end;
+}
+
+.card-item__code text {
+  font-size: 24rpx;
+  margin-bottom: 12rpx;
+  color: #777;
+  font-weight: normal;
+  margin-left: 10rpx;
 }
 
 .card-item__time {
-  font-size: 24rpx;
+  font-size: 26rpx;
   color: rgba(238, 75, 54, 0.7);
 }
 

@@ -15,7 +15,7 @@
       slot="icon-active"
       src="{{ app.getIconPath(iconPath, item.iconActive || item.icon) }}"
       mode="aspectFit"
-      style="width: 50px; height: 42rpx;"
+      style="width: 50rpx; height: 42rpx;"
     />
     <text>{{item.name}}</text>
   </van-tabbar-item>
