@@ -7,7 +7,7 @@
 }
 
 .list {
-  padding: 32rpx;
+  padding: 32rpx 32rpx 0;
   box-sizing: border-box;
   min-height: 100%;
 }
@@ -15,6 +15,7 @@
 .list__wrap {
   height: calc(100vh - 290rpx);
   background: #f9f9f9;
+  box-sizing: border-box;
 }
 
 .card {
@@ -25,10 +26,6 @@
   padding: 24rpx 0;
   font-size: 28rpx;
   margin-bottom: 32rpx;
-}
-
-.list .card:nth-last-of-type(2) {
-  margin-bottom: 0
 }
 
 .card-site {
@@ -140,6 +137,6 @@
   margin-right: 30rpx;
 }
 
-.card-btn__reject {
+.card-btn .van-button:not(.card-btn__all) {
   margin-left: 18rpx;
 }

@@ -9,70 +9,73 @@
 
 <van-toast id="van-toast" />
 
-<scroll-view scroll-with-animation refresher-enabled scroll-anchoring="{{true}}" scroll-y class="list__wrap" bindrefresherrefresh="handleRefreshList" bindscrolltolower="handleLoadMoreList" refresher-triggered="{{isRefresher}}" lower-threshold="30">
-  <view class="list">
-    <block wx:if="{{isComplete}}">
-      <view class="card" wx:for="{{siteData}}" wx:for-index="idx" wx:key="idx">
-        <view class="card-site">
-          <view class="card-site__name">
-            <view>
-              <text>站点：{{item.name}}</text>
-              <van-icon class="card-item__icon" name="/assets/icons/addr.png" size="36rpx"></van-icon>
-            </view>
-            <text class="card-site__num">共{{item.list.length}}个</text>
+<scroll-view scroll-with-animation refresher-enabled scroll-anchoring="{{true}}" scroll-y class="list__wrap" bindrefresherrefresh="handleRefreshList" bindscrolltolower="handleLoadMoreList" refresher-triggered="{{isRefresher}}" lower-threshold="150">
+  <view wx:if="{{!siteData.length && isComplete}}" style="height: 100%" class="flex flex-align__center flex-justify__center">
+    <van-image fit="heightFix" height="320rpx" src="/assets/images/empty.png" ></van-image>
+  </view>
+  <view class="list" wx:else>
+    <view class="card" wx:if="{{isComplete}}" wx:for="{{siteData}}" wx:for-index="idx" wx:key="idx">
+      <view class="card-site">
+        <view class="card-site__name">
+          <view>
+            <text>站点：{{item.name}}</text>
+            <van-icon class="card-item__icon" name="/assets/icons/addr.png" size="36rpx"></van-icon>
           </view>
-          <view class="card-site__addr">
-            地址：{{item.addr}}
-          </view>
+          <text class="card-site__num">共{{item.list.length}}个</text>
         </view>
-        <view class="card-express">
-          <view class="card-item" bindtap="handleCheckbox" wx:for-index="subIdx" wx:for-item="subItem" data-no="{{subItem.no}}" data-index="{{idx}}" wx:for="{{item.list}}" wx:key="no">
-            <van-checkbox checked-color="#3F8FFF" value="{{checkbox[subItem.no]}}" data-no="{{subItem.no}}" data-index="{{idx}}"></van-checkbox>
-            <view class="card-item__wrap">
-              <view class="card-item__content">
-                <view class="card-item__company">
-                  <view class="card-item__num">
-                    运单号：{{subItem.no}}
-                    <van-icon data-no="{{subItem.no}}" catchtap="handleCopy" class="card-item__icon" name="/assets/icons/copy.png" size="28rpx"></van-icon>
-                  </view>
-                  <view class="card-item__name">
-                    {{subItem.name}} 
-                    <!-- 每家快递对应不同颜色 -->
-                  </view>
+        <view class="card-site__addr">
+          地址：{{item.addr}}
+        </view>
+      </view>
+      <view class="card-express">
+        <view class="card-item" bindtap="handleCheckbox" wx:for-index="subIdx" wx:for-item="subItem" data-no="{{subItem.no}}" data-index="{{idx}}" wx:for="{{item.list}}" wx:key="no">
+          <van-checkbox checked-color="#3F8FFF" value="{{checkbox[subItem.no]}}" data-no="{{subItem.no}}" data-index="{{idx}}"></van-checkbox>
+          <view class="card-item__wrap">
+            <view class="card-item__content">
+              <view class="card-item__company">
+                <view class="card-item__num">
+                  运单号：{{subItem.no}}
+                  <van-icon data-no="{{subItem.no}}" catchtap="handleCopy" class="card-item__icon" name="/assets/icons/copy.png" size="28rpx"></van-icon>
                 </view>
-
-                <view class="card-item__code flex flex-justify__center">
-                  {{subItem.code}}<text>取件码</text>
-                </view>
-
-                <view class="card-item__info flex flex-justify__center flex-align__center">
-                  <view>
-                    <view class="card-item__city">{{subItem.info.addr[0]}}</view>
-                    <view class="card-item__user">{{subItem.info.name[0]}}</view>
-                  </view>
-                  <view><van-icon name="/assets/icons/next-step.png" size="60rpx"></van-icon></view>
-                  <view>
-                    <view class="card-item__city">{{subItem.info.addr[1]}}</view>
-                    <view class="card-item__user">{{subItem.info.name[1]}}</view>
-                  </view>
+                <view class="card-item__name" style="{{subItem.color ? 'color: ' + subItem.color : ''}}">
+                  {{subItem.name}} 
+                  <!-- 每家快递对应不同颜色 -->
                 </view>
               </view>
 
-              <view class="card-item__time flex flex-justify__between">
-                <text>到站时间：{{subItem.time}}</text>
-                <text class="card-item__state">{{subItem.state}}</text>
+              <view class="card-item__code flex flex-justify__center">
+                {{subItem.code}}<text>取件码</text>
               </view>
+
+              <view class="card-item__info flex flex-justify__center flex-align__center">
+                <view>
+                  <view class="card-item__city">{{subItem.info.addr[0]}}</view>
+                  <view class="card-item__user">{{subItem.info.name[0]}}</view>
+                </view>
+                <view><van-icon name="/assets/icons/next-step.png" size="60rpx"></van-icon></view>
+                <view>
+                  <view class="card-item__city">{{subItem.info.addr[1]}}</view>
+                  <view class="card-item__user">{{subItem.info.name[1]}}</view>
+                </view>
+              </view>
+            </view>
+
+            <view class="card-item__time flex flex-justify__between">
+              <text>到站时间：{{subItem.time}}</text>
+              <text class="card-item__state">{{subItem.state}}</text>
             </view>
           </view>
         </view>
-        <view class="card-btn">
-          <van-button size="small" type="primary" bindtap="handlePickUp" disabled="{{!item.isCheckbox}}">一键取件</van-button>
-          <van-button size="small" type="danger" class="card-btn__reject" disabled="{{!item.isCheckbox}}" bindtap="handleRejection">一键拒收</van-button>
-        </view>
       </view>
-      <view wx:if="{{!siteData.length}}" style="height: 100%" class="flex flex-align__center flex-justify__center">
-        <van-image fit="heightFix" height="320rpx" src="/assets/images/empty.png" ></van-image>
+      <view class="card-btn">
+        <van-button size="small" type="primary" bind:click="handlePickUp" data-all="1" class="card-btn__all">全部取出</van-button>
+        <van-button size="small" type="primary" bind:click="handlePickUp" disabled="{{!item.isCheckbox}}">取件</van-button>
+        <van-button size="small" type="danger" disabled="{{!item.isCheckbox}}" bind:click="handleRejection">拒收</van-button>
       </view>
-    </block>
+    </view>
+
+    <van-loading class="flex flex-align__center flex-justify__center" style="{{!isComplete ? 'margin-top: 32rpx' : 'margin-bottom: 32rpx'}}" size="44rpx" wx:if="{{!isEndPage && isLoading && siteData.length}}">加载中…</van-loading>
   </view>
 </scroll-view>
+
+<van-dialog id="van-dialog" />
