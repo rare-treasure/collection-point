@@ -1,8 +1,24 @@
 <!--pages/check/index.wxml-->
+<van-search bind:focus="handleSearchShow" bind:change="handleSearchChange" shape="round" placeholder="请输入快递单号" left-icon="" value="{{ searchVal }}" use-action-slot>
+  <van-transition slot="action" custom-class="flex" name="fade">
+    <text style="height: 30px; line-height: 30px" wx:if="{{(isSearch || isShowPopup) && searchVal.length === 0}}" catchtap="handleSearchClose">取消</text>
+    <van-icon size="30px" wx:else name="{{isSearch ? 'search': 'scan'}}" catchtap="handleSearch"></van-icon>
+  </van-transition>
+</van-search>
+<van-popup
+  show="{{ isSearch }}"
+  position="top"
+  z-index="99999"
+  custom-style="height: 20%; margin-top: 63px;"
+  overlay-style="margin-top: 63px;"
+  bind:close="handleSearchClose"
+  bind:after-leave="handlePopupClose"
+  duration="200"
+>
+内容
+</van-popup>
 
-<van-search shape="round" placeholder="请输入快递单号" left-icon="" value="{{ searchVal }}" right-icon="{{searchVal.length > 0 ? 'search': 'scan'}}" bind:change="handleSearch"></van-search>
-
-<van-tabs title-inactive-color="rgba(100, 101, 102, 0.8)" bind:change="handleTabs">
+<van-tabs title-inactive-color="rgba(100, 101, 102, 0.8)" wx:if="{{isShowTab}}" bind:change="handleTabs">
   <van-tab title="收到的"></van-tab>
   <van-tab title="寄出的"></van-tab>
 </van-tabs>
@@ -32,7 +48,7 @@
           <van-checkbox checked-color="#3F8FFF" value="{{checkbox[subItem.no]}}" data-no="{{subItem.no}}" data-index="{{idx}}"></van-checkbox>
           <view class="card-item__wrap">
             <view class="card-item__content">
-              <view class="card-item__company">
+              <view class="card-item__company" catchtap="handleDetail" data-no="{{subItem.no}}">
                 <view class="card-item__num">
                   运单号：{{subItem.no}}
                   <van-icon data-no="{{subItem.no}}" catchtap="handleCopy" class="card-item__icon" name="/assets/icons/copy.png" size="28rpx"></van-icon>

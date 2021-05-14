@@ -6,6 +6,10 @@
   color: #3F8FFF;
 }
 
+/* .van-search {
+  border-bottom: 1px solid rgba(212, 212, 212, 0.3);
+} */
+
 .list {
   padding: 32rpx 32rpx 0;
   box-sizing: border-box;

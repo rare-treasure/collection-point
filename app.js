@@ -8,6 +8,7 @@ App({
     const token = wx.getStorageSync('token');
     
     if(token) {
+      const that = this;
       wx.checkSession({
         success: () => {
           // 登录未失效，可根据旧有的登录标识
@@ -15,7 +16,7 @@ App({
         },
         fail() {
           // 重新登录
-          this.login();
+          that.login();
         }
       })
     } else {

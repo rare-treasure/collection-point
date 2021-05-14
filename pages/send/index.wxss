@@ -57,4 +57,9 @@
 
 .function .van-icon {
   margin-bottom: 6rpx;
-} 
+}
+
+.user-icon {
+  border-radius: 50%;
+  border: 4rpx solid #515151;
+}

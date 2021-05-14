@@ -25,7 +25,10 @@ Page({
     isRefresher: false,
     isComplete: false,
     isEndPage: false,
-    isLoading: false
+    isLoading: false,
+    isShowTab: false,
+    isSearch: false,
+    isShowPopup: false
   },
 
   /**
@@ -37,13 +40,44 @@ Page({
     }
 
     this.setData({
-      isRefresher: true
+      isRefresher: true,
+      isShowTab: true
     })
   },
+  handleDetail() {
+
+  },
   handleSearch(e) {
+    if(!this.data.isSearch) {
+      wx.scanCode({
+        success() {
+          // 先查询后端，看这个单号是否存在，如果存在跳转快递详情页。不存在提示订单不存在；没有对应的数据接口这里模拟一个虚拟的快递单详情
+        }
+      })
+    } else {
+      // 先查询后端，看这个单号是否存在，如果存在直接跳转至虚拟的快递单详情；不存在提示订单不存在；没有对应的数据接口这里模拟一个虚拟的快递单详情
+    }
+  },
+  handleSearchChange(ev) {
     this.setData({
-      searchVal: e.detail,
-    });
+      searchVal: ev.detail
+    })
+  },
+  handleSearchShow() {
+    this.setData({
+      isSearch: true,
+      isShowPopup: true
+    })
+  },
+  handleSearchClose() {
+    this.setData({
+      isSearch: false
+    })
+  },
+  handlePopupClose() {
+    this.setData({
+      isShowPopup: false
+    })
   },
   handleCheckbox(e) {
     let { no, index } = e.target.dataset;
@@ -83,7 +117,8 @@ Page({
       isRefresher: true,
       activeTabIdx: index,
       siteData: [],
-      isComplete: false
+      isComplete: false,
+      isChangeTab: true
     })
   },
   handleCopy(e) {
@@ -114,7 +149,15 @@ Page({
     })
   },
   handleRejection() {
+    Dialog.confirm({
+      title: '拒收提醒',
+      message: '是否要拒收当前站点选中的快递？',
+      zIndex: 99999
+    }).then(() => {
+      // 调接口
+      // 接口成功后，手动匹配数据删除对应的订单
 
+    })
   },
   getList(isAdd = false) {
     const siteData = this.data.siteData;
@@ -153,17 +196,21 @@ Page({
         const { isRefresher, isComplete } = this.data;
         const isEndPage = Math.random() > 0.5;
 
-        this.setData({
-          ...(isRefresher ? {
-            isRefresher: false
-          } : {}),
-          ...(!isComplete ? {
-            isComplete: true
-          } : {}),
-          siteData: isAdd ? [...siteData, ...data] : data,
-          isEndPage
-        })
-
+        if(!this.data.isChangeTab) {
+          this.setData({
+            ...(isRefresher ? {
+              isRefresher: false
+            } : {}),
+            ...(!isComplete ? {
+              isComplete: true
+            } : {}),
+            siteData: isAdd ? [...siteData, ...data] : data,
+            isEndPage
+          })
+        } else {
+          this.handleRefreshList();
+        }
+        
         resolve();
       }, 1000)
     });
@@ -173,7 +220,8 @@ Page({
   handleRefreshList() {
     this.setData({
       isRefresher: true,
-      isLoading: false
+      isLoading: false,
+      isChangeTab: false
     })
 
     this.getList().finally(() => {
@@ -188,5 +236,15 @@ Page({
     }
 
     this.getList(true);
+  },
+  onHide() {
+    setTimeout(() => {
+      this.setData({
+        activeTabIdx: 0,
+        siteData: [],
+        isComplete: false,
+        isShowTab: false
+      })
+    }, 150);
   }
 })

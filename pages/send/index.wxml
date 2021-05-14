@@ -5,14 +5,15 @@
     <view class="left flex">
       <van-icon
         wx:if="{{isLogin}}"
-        size="120rpx"
+        size="108rpx"
         name="/assets/icons/user_default.png"
+        class="user-icon"
       />
       <van-image
         wx:else
         round
-        width="120rpx"
-        height="120rpx"
+        width="108rpx"
+        height="108rpx"
         src="{{userInfo.avatarUrl}}"
       />
     </view>

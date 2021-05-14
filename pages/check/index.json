@@ -5,6 +5,8 @@
     "van-tabs": "@vant/weapp/tabs/index",
     "van-icon": "@vant/weapp/icon/index",
     "van-button": "@vant/weapp/button/index",
-    "van-checkbox": "@vant/weapp/checkbox/index"
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-transition": "@vant/weapp/transition/index"
   }
 }
