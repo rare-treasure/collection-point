@@ -5,17 +5,27 @@
     <van-icon size="30px" wx:else name="{{isSearch ? 'search': 'scan'}}" catchtap="handleSearch"></van-icon>
   </van-transition>
 </van-search>
+
 <van-popup
   show="{{ isSearch }}"
   position="top"
   z-index="99999"
-  custom-style="height: 20%; margin-top: 63px;"
+  custom-style="margin-top: 63px;"
   overlay-style="margin-top: 63px;"
   bind:close="handleSearchClose"
   bind:after-leave="handlePopupClose"
-  duration="200"
+  duration="150"
+  class="van-popup"
 >
-内容
+  <view class="history">
+    <text>查询历史</text>
+    <view class="history__clear">清空</view>
+  </view>
+  <view class="history__list">
+    <view class="history__item">2131232312312</view>
+    <view class="history__item">2131232312312</view>
+    <!-- <view class="history__null">暂无查询记录</view> -->
+  </view>
 </van-popup>
 
 <van-tabs title-inactive-color="rgba(100, 101, 102, 0.8)" wx:if="{{isShowTab}}" bind:change="handleTabs">
@@ -33,9 +43,9 @@
     <view class="card" wx:if="{{isComplete}}" wx:for="{{siteData}}" wx:for-index="idx" wx:key="idx">
       <view class="card-site">
         <view class="card-site__name">
-          <view>
+          <view class="flex flex-align__center">
             <text>站点：{{item.name}}</text>
-            <van-icon class="card-item__icon" name="/assets/icons/addr.png" size="36rpx"></van-icon>
+            <van-icon class="card-item__icon" name="/assets/icons/addr.png" size="40rpx"></van-icon>
           </view>
           <text class="card-site__num">共{{item.list.length}}个</text>
         </view>
@@ -84,9 +94,9 @@
         </view>
       </view>
       <view class="card-btn">
-        <van-button size="small" type="primary" bind:click="handlePickUp" data-all="1" class="card-btn__all">全部取出</van-button>
-        <van-button size="small" type="primary" bind:click="handlePickUp" disabled="{{!item.isCheckbox}}">取件</van-button>
-        <van-button size="small" type="danger" disabled="{{!item.isCheckbox}}" bind:click="handleRejection">拒收</van-button>
+        <van-button color="#3F8FFF" size="small" type="primary" bind:click="handlePickUp" data-all="1" class="card-btn__all">全部取出</van-button>
+        <van-button color="#3F8FFF" size="small" type="primary" bind:click="handlePickUp" disabled="{{!item.isCheckbox}}">取出</van-button>
+        <van-button color="#e02020" size="small" type="danger" disabled="{{!item.isCheckbox}}" bind:click="handleRejection">拒收</van-button>
       </view>
     </view>
 

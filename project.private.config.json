@@ -19,8 +19,8 @@
           "scene": null
         },
         {
-          "name": "查快递",
-          "pathName": "pages/check/index",
+          "name": "我的包裹",
+          "pathName": "pages/package/index",
           "query": "",
           "scene": null
         }

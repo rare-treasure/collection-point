@@ -18,11 +18,11 @@
       />
       <text>寄件下单</text>
     </view>
-    <view class="home-toolbox__item flex flex-align__center">
+    <view class="home-toolbox__item flex flex-align__center" data-mode="switch" bindtap="handlePageChange" data-url="/pages/package/index">
       <van-image
         height="{{ imgHeight }}"
         fit="{{imgFit}}"
-        src="/assets/icons/package.png"
+        src="/assets/icons/package_active.png"
       />
       <text>我的包裹</text>
     </view>

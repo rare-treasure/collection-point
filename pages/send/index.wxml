@@ -5,15 +5,15 @@
     <view class="left flex">
       <van-icon
         wx:if="{{isLogin}}"
-        size="108rpx"
+        size="98rpx"
         name="/assets/icons/user_default.png"
         class="user-icon"
       />
       <van-image
         wx:else
         round
-        width="108rpx"
-        height="108rpx"
+        width="98rpx"
+        height="98rpx"
         src="{{userInfo.avatarUrl}}"
       />
     </view>
@@ -34,13 +34,15 @@
     </view>
   </view>
   <view class="item">
-    <van-cell title="寄件历史" is-link />
-    <van-cell title="查询历史" is-link />
+    <van-cell title="寄件记录" is-link />
+  </view>
+  <view class="item">
+    <van-cell title="实名认证" is-link />
     <van-cell title="在线客服" is-link />
+    <van-cell title="客服电话" is-link />
   </view>
   <view class="item">
     <van-cell title="推荐此小程序" is-link />
-    <van-cell title="版本号" is-link />
     <van-cell title="关于" is-link />
   </view>
 </view>

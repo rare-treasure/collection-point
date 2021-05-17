@@ -28,3 +28,8 @@
   margin-left: 80rpx;
   border-left: 1px dotted #ccc;
 }
+
+.home-toolbox text {
+  color: rgb(100, 101, 102);
+  font-size: 30rpx;
+} 

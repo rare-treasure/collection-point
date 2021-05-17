@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/home/index",
-    "pages/check/index",
+    "pages/package/index",
     "pages/send/index"
   ],
   "window": {
@@ -19,8 +19,8 @@
       "pagePath": "pages/home/index",
       "text": "首页"
     }, {
-      "pagePath": "pages/check/index",
-      "text": "查快递"
+      "pagePath": "pages/package/index",
+      "text": "我的包裹"
     }, {
       "pagePath": "pages/send/index",
       "text": "个人中心"

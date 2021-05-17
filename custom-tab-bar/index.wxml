@@ -1,8 +1,8 @@
 <!--pages/tab-bar/tabbar.wxml-->
 <wxs src="../app.wxs" module="app"></wxs>
 
-<van-tabbar class="tab-bar" active="{{ active }}" bind:change="onChange">
-  <van-tabbar-item active-color="#3F8FFF" wx:for="{{ otherConfList }}" wx:key="index" icon="{{item.icon ? '' : 'home-o'}}">
+<van-tabbar active-color="#3F8FFF" inactive-color="#8a8a8a" class="tab-bar" active="{{ active }}" bind:change="onChange">
+  <van-tabbar-item wx:for="{{ otherConfList }}" wx:key="index" icon="{{item.icon ? '' : 'home-o'}}">
     <image
       wx:if="item.icon"
       slot="icon"

@@ -144,3 +144,35 @@
 .card-btn .van-button:not(.card-btn__all) {
   margin-left: 18rpx;
 }
+
+.van-popup .history {
+  text-indent: 24rpx;
+  margin-bottom: 18rpx;
+  color: #969799;
+  position: relative;
+}
+
+.van-popup .history__clear {
+  position: absolute;
+  right: 16rpx;
+  top: 0;
+  font-size: 26rpx;
+  color: rgba(255, 0, 0, 0.7);
+}
+
+.van-popup .history__null {
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.van-popup .history__list {
+  color: #969799;
+  margin-bottom: 18rpx;
+}
+
+.van-popup .history__item {
+  text-indent: 24rpx;
+  color: #232323;
+  line-height: 52rpx;
+}

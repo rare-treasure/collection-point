@@ -1,13 +1,13 @@
 /* pages/send/send.wxss */
-.user-center{
-  padding-top: 50rpx;
+.user-center {
+  padding-top: 60rpx;
   width: 100vw;
-  height: calc(100vh - 50rpx);
+  height: calc(100vh - 60rpx);
   background-color: #f9f9f9;
 }
 
 .user-center .layout {
-  padding-bottom: 60rpx;
+  padding-bottom: 56rpx;
   display: flex;
   justify-content: start;
   align-items: center;
@@ -50,7 +50,7 @@
 }
 
 .function {
-  margin: 0 120rpx 70rpx;
+  margin: 0 120rpx 80rpx;
   color: rgb(50, 50, 51);
   font-size: 28rpx;
 }

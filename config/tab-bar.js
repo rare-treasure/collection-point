@@ -7,10 +7,10 @@ export default {
       "wxmlPath": "pages/home/index",
     },
     {
-      "name": "查快递",
-      "icon": "check.png",
-      "iconActive": "check_active.png",
-      "wxmlPath": "pages/check/index",
+      "name": "我的包裹",
+      "icon": "package.png",
+      "iconActive": "package_active.png",
+      "wxmlPath": "pages/package/index",
     },
     {
       "name": "个人中心",

@@ -10,7 +10,7 @@ Page({
     userInfo: app.globalData.userInfo,
     funcList: [{
       name: '我的包裹',
-      iconName: 'package'
+      iconName: 'package_active'
     }, {
       name: '寄件下单',
       iconName: 'sender'
@@ -121,5 +121,14 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  handlePageChange(ev) {
+    const { mode = '', url = '' } = ev.currentTarget.dataset || {};
+
+    if(mode === 'switch') {
+      wx.switchTab({
+        url,
+      })
+    }
   }
 })
